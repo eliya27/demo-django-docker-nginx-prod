@@ -16,7 +16,7 @@ services:
     volumes: 
       - static_data:/vol/static 
     ports:
-      - "8080:8081"      
+      - "8081:8081"      
     depends_on:
       - app
 
