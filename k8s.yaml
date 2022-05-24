@@ -20,7 +20,7 @@ spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-      - name: angular-web-app
+      - name: django-app
         image: devacr83.azurecr.io/python-repo/django-app:latest
         ports:
         - containerPort: 80
