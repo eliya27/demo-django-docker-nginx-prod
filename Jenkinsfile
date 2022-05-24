@@ -47,7 +47,7 @@ pipeline {
                                
             steps {
                               echo "Start Image building"
-                withCredentials([usernamePassword(credentialsId:'azure-cred', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+                withCredentials([/*usernamePassword*/StandardUsernamePasswordCredentials(credentialsId:'Azure-credentials', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
                             
                             sh 'az acr build --image $REPO/$IMAGE_NAME:$TAG --registry $CONTAINER_REGISTRY --resource-group dev-acr-rg --file Dockerfile .' 
                               echo "Finish Image building"
