@@ -17,7 +17,7 @@ pipeline {
             
             steps {
                                echo "Login to Azure cloud"
-                withCredentials([usernamePassword(credentialsId: 'Azure-credentials', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+                withCredentials([usernamePassword(credentialsId: 'azure-cred', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
                           /*sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'*/ 
                             sh 'az login --tenant -t $AZURE_TENANT_ID'
                             sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
@@ -33,7 +33,7 @@ pipeline {
                              
             steps {
                              echo "Login to Container registry"
-                withCredentials([usernamePassword(credentialsId: 'Azure-credentials', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) 
+                withCredentials([usernamePassword(credentialsId: 'azure-cred', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) 
                        {
                             
                             sh 'az acr login --name $CONTAINER_REGISTRY --resource-group $RESOURCE_GROUP'
@@ -47,7 +47,7 @@ pipeline {
                                
             steps {
                               echo "Start Image building"
-                withCredentials([usernamePassword(credentialsId:'Azure-credentials', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+                withCredentials([usernamePassword(credentialsId:'azure-cred', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
                             
                             sh 'az acr build --image $REPO/$IMAGE_NAME:$TAG --registry $CONTAINER_REGISTRY --resource-group dev-acr-rg --file Dockerfile .' 
                               echo "Finish Image building"
