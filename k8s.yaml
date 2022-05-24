@@ -20,8 +20,4 @@ spec:
         ports:
         - containerPort: 8080
            
-<<<<<<< HEAD
-          
-=======
 
->>>>>>> c8f8a2be26eb22257a2b255ed7e0ba258803357a
