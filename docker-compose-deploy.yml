@@ -8,7 +8,7 @@ services:
      - static_data:/vol/web
     environment:
      - SECRET_KEY:samplesecretkey123   
-     - ALLOWED_HOST=127.0.0.1, localhost, django-app
+     - ALLOWED_HOST=127.0.0.1, localhost
 
   proxy: 
     build:
@@ -16,7 +16,7 @@ services:
     volumes: 
       - static_data:/vol/static 
     ports:
-      - "8081:8081"      
+      - "8080:8080"      
     depends_on:
       - app
 
